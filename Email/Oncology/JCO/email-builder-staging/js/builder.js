@@ -888,10 +888,13 @@
     var link = document.createElement("a");
     link.href = url;
     link.download = "index.html";
+    link.style.display = "none";
     document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    window.setTimeout(function () {
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }, 1000);
   });
 
   document.getElementById("resetBuilder").addEventListener("click", function () {
