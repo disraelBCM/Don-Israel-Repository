@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Email Builder</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <!-- <p class="eyebrow">JCO Marketo Email Builder</p> -->
+      <h1>Email Builder</h1>
+    </div>
+    <div class="header-actions">
+      <button class="header-icon-button" id="undoAction" type="button" aria-label="Undo" title="Undo" disabled><span class="material-symbols-outlined" aria-hidden="true">undo</span></button>
+      <button class="header-icon-button" id="redoAction" type="button" aria-label="Redo" title="Redo" disabled><span class="material-symbols-outlined" aria-hidden="true">redo</span></button>
+      <button class="secondary-button" id="resetBuilder" type="button">Reset</button>
+      <button class="primary-button" id="copyCode" type="button">Copy HTML</button>
+    </div>
+  </header>
+
+  <main class="builder-shell">
+    <section class="panel preview-panel" aria-label="Email preview">
+      <div class="panel-heading">
+        <h2>Preview</h2>
+        <div class="preview-actions">
+          <span class="status-pill">728px email canvas</span>
+          <span id="copyStatus" class="copy-status" aria-live="polite"></span>
+        </div>
+      </div>
+      <iframe id="emailPreview" title="Email preview"></iframe>
+      <textarea id="outputCode" spellcheck="false" aria-label="Generated Marketo email HTML"></textarea>
+    </section>
+
+    <aside class="control-column" aria-label="Email builder controls">
+      <section class="panel builder-controls" aria-label="Email builder controls">
+        <div class="builder-tabs" role="tablist" aria-label="Builder sections">
+          <button class="builder-tab is-active" id="contentTab" type="button" role="tab" aria-selected="true">Content</button>
+          <button class="builder-tab" id="modulesTab" type="button" role="tab" aria-selected="false">Modules</button>
+        </div>
+
+        <div class="control-view" id="contentView">
+          <div id="moduleList" class="module-list"></div>
+        </div>
+
+        <div class="control-view" id="settingsView" hidden>
+          <div class="settings-toolbar">
+            <button class="primary-button" id="backToContent" type="button">Back</button>
+          </div>
+          <form id="moduleEditor" class="module-editor"></form>
+        </div>
+
+        <div class="control-view" id="moduleLibraryView" hidden>
+          <div id="moduleLibrary" class="module-library"></div>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="js/builder.js"></script>
+</body>
+</html>
