@@ -881,6 +881,19 @@
 
   document.getElementById("redoAction").addEventListener("click", redo);
 
+  document.getElementById("downloadHtml").addEventListener("click", function () {
+    var output = document.getElementById("outputCode");
+    var blob = new Blob([output.value], { type: "text/html;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = "index.html";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  });
+
   document.getElementById("resetBuilder").addEventListener("click", function () {
     pushHistory();
     resetState();
